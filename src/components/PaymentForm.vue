@@ -46,7 +46,10 @@
 
 <script setup>
 import { ref, defineEmits } from 'vue'
+import { socket } from '../socket'
+import { useCartStore } from '../stores/cartStore'
 
+const cart = useCartStore()
 const emit = defineEmits(['payment-complete'])
 
 const cardNumber = ref('')
@@ -83,6 +86,21 @@ function validate() {
 
 function submitPayment() {
   if (validate()) {
+    // Build order payload
+    const order = {
+      id: Date.now(), // temporary ID — consider using a UUID or backend ID in production
+      items: cart.items.map((i) => `${i.item.name} x${i.quantity}`),
+      status: 'pending',
+      createdAt: new Date().toISOString()
+    }
+
+    // Send to server
+    socket.emit('new-order', order)
+
+    // Clear cart
+    cart.clearCart()
+
+    // Emit to parent
     emit('payment-complete')
   }
 }
