@@ -44,6 +44,12 @@
           <span>${{ total.toFixed(2) }}</span>
         </div>
         <button
+          @click="clearCart"
+          class="w-full bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+        >
+          Clear Cart
+        </button>
+        <button
           class="w-full mt-4 bg-orange-500 text-white py-2 rounded hover:bg-orange-600"
         >
           Place Order
@@ -66,6 +72,10 @@ const categories = ['All', 'Burgers', 'Sides', 'Drinks', 'Desserts'];
 function handleAddToCart(item) {
   console.log(item.name + " added to cart")
   cart.value.push(item);
+}
+
+function clearCart() {
+  cart.value = [];
 }
 
 const filteredItems = computed(() => {
