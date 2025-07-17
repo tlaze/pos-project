@@ -49,6 +49,9 @@ import { ref, defineEmits } from 'vue'
 import { socket } from '../socket'
 import { useCartStore } from '../stores/cartStore'
 
+const props = defineProps({
+  orderId: Number
+})
 const cart = useCartStore()
 const emit = defineEmits(['payment-complete'])
 
@@ -88,7 +91,7 @@ function submitPayment() {
   if (validate()) {
     // Build order payload
     const order = {
-      id: Date.now(), // temporary ID — consider using a UUID or backend ID in production
+      id: props.orderId,
       items: cart.items.map((i) => `${i.item.name} x${i.quantity}`),
       status: 'pending',
       createdAt: new Date().toISOString()

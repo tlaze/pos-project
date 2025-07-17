@@ -22,7 +22,11 @@
       </div>
 
       <!-- Payment Form -->
-      <PaymentForm v-if="!paymentComplete" @payment-complete="handlePaymentComplete" />
+      <PaymentForm
+        v-if="!paymentComplete"
+        :order-id="orderId"
+        @payment-complete="handlePaymentComplete"
+      />
     </section>
   </div>
 </template>
