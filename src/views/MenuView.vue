@@ -1,7 +1,7 @@
 <template>
-  <div class="flex h-screen">
+  <div class="flex flex-col md:flex-row">
     <!-- Sidebar Categories -->
-    <aside class="w-1/5 bg-amber-50 p-4 space-y-4 border-r">
+    <aside class="w-full md:w-1/5 bg-amber-50 p-4 border-r">
       <h2 class="text-xl font-bold mb-4">Categories</h2>
       <ul class="space-y-2">
         <li v-for="cat in categories" :key="cat">
@@ -17,9 +17,9 @@
     </aside>
 
     <!-- Menu Grid -->
-    <main class="w-3/5 p-6 overflow-y-auto">
+    <main class="w-full md:w-3/5 p-4">
       <h1 class="text-3xl font-bold mb-6">Order Now</h1>
-      <div class="grid grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       <MenuCard
         v-for="item in filteredItems"
         :key="item.id"
@@ -30,7 +30,7 @@
     </main>
 
     <!-- Cart Sidebar -->
-    <aside class="w-1/5 bg-amber-50 p-4 border-l">
+    <aside class="w-full md:w-1/5 bg-amber-50 p-4 border-l mt-4 md:mt-0">
       <h2 class="text-xl font-bold mb-4">Your Order</h2>
       <ul class="space-y-2">
         <li v-for="item in cart" :key="item.id" class="flex justify-between">

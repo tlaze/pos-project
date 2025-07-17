@@ -1,6 +1,14 @@
 <template>
-  <div class="rounded-xl shadow p-4 bg-white">
-    <img :src="item.image" :alt="item.name" contain height="250px" width="250px" class="rounded w-full mb-4" />
+  <div class="rounded-xl shadow p-4 bg-white h-full flex flex-col justify-between">
+    <!-- Image Container -->
+    <div class="h-40 flex justify-center items-center mb-4">
+      <img
+        :src="item.image"
+        :alt="item.name"
+        class="h-full object-contain"
+      />
+    </div>
+
     <h2 class="text-xl font-bold">{{ item.name }}</h2>
     <p class="text-sm text-gray-600">{{ item.description }}</p>
     <div class="mt-2 font-semibold">${{ item.price.toFixed(2) }}</div>
