@@ -13,7 +13,7 @@
     <p class="text-sm text-gray-600">{{ item.description }}</p>
     <div class="mt-2 font-semibold">${{ item.price.toFixed(2) }}</div>
     <button
-      @click="$emit('add-to-cart', item)"
+      @click="cart.addToCart(item)"
       class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
     >
       Add to Cart
@@ -22,6 +22,8 @@
 </template>
 
 <script setup>
+import { useCartStore } from '../stores/cartStore';
 defineProps(['item']);
-defineEmits(['add-to-cart']);
+
+const cart = useCartStore();
 </script>
