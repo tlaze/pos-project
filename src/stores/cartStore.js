@@ -37,4 +37,6 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   return { items, total, addToCart, increment, decrement, clearCart };
+}, {
+    persist:true
 });
