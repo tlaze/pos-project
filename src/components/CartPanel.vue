@@ -19,6 +19,7 @@
         Clear Cart
       </button>
       <button
+        @click="handleCheckout"
         class="w-full mt-4 bg-orange-500 text-white py-2 rounded hover:bg-orange-600"
       >
         Place Order
@@ -29,5 +30,12 @@
 
 <script setup>
 import { useCartStore } from '../stores/cartStore';
+import { useRouter } from 'vue-router';
+
 const cart = useCartStore();
+const router = useRouter();
+
+function handleCheckout(){
+    router.push('/checkout')
+}
 </script>
