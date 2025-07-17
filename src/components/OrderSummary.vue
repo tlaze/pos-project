@@ -3,14 +3,14 @@
     <h2 class="text-2xl font-bold mb-4">Order Summary</h2>
 
     <ul class="divide-y divide-gray-200">
-      <li
-        v-for="item in cart.items"
-        :key="item.id"
+        <li
+        v-for="cartItem in cart.items"
+        :key="cartItem.item.id"
         class="flex justify-between py-2"
-      >
-        <span>{{ item.name }}</span>
-        <span>${{ item.price.toFixed(2) }}</span>
-      </li>
+        >
+        <span>{{ cartItem.item.name }} (x{{ cartItem.quantity }})</span>
+        <span>${{ (cartItem.item.price * cartItem.quantity).toFixed(2) }}</span>
+        </li>
     </ul>
 
     <div class="mt-6 space-y-2 border-t pt-4 text-sm">
@@ -37,10 +37,8 @@ import { useCartStore } from '../stores/cartStore'
 const cart = useCartStore()
 
 const subtotal = computed(() =>
-  cart.items.reduce((sum, item) => sum + item.price, 0)
+  cart.items.reduce((sum, cartItem) => sum + cartItem.item.price * cartItem.quantity, 0)
 )
-
 const tax = computed(() => subtotal.value * 0.085)
-
 const total = computed(() => subtotal.value + tax.value)
 </script>
