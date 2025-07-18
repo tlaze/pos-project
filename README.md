@@ -12,6 +12,7 @@ This is a modern self-service ordering kiosk for a restaurant built with **Vue 3
 - ✅ Pinia for global state management
 - ✅ Order summary and mock payment form with input validation
 - ✅ Checkout flow with confirmation screen and order ID
+- ✅ Send menu items to websocket for kitchen dashboard
 - ✅ Persistent cart state using `pinia-plugin-persistedstate`
 - ✅ Unit testing for Pinia stores using Vitest
 
